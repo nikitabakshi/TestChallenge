@@ -34,11 +34,12 @@ public class BaseTest {
 
 
     @BeforeMethod
-    public void setUp()
-    {
+    public void setUp() throws Exception {
 
        if(!Objects.isNull(prop.getProperty("url")))
        driver= WebdriverManager.getDriver(prop.getProperty("browsername"));
+       else
+           throw new Exception("Invalid Browser name");
 
     }
 

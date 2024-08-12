@@ -16,17 +16,12 @@ public class BasePage {
     public BasePage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver,this);
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
-
     }
     public void scrollintoView(WebElement element, WebDriver driver)
     {
         JavascriptExecutor js=((JavascriptExecutor) driver);
         js.executeScript("arguments[0].scrollIntoView(true);", element);
     }
-
-
-
 
 
 }

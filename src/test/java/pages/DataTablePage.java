@@ -8,7 +8,7 @@ import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
-public class DataTable extends BasePage {
+public class DataTablePage extends BasePage {
 
     @FindBy(xpath="//h5[text()='Checkbox']")
     WebElement checkBox;
@@ -16,7 +16,13 @@ public class DataTable extends BasePage {
     @FindBy(xpath="//h5[text()='Checkbox']/..//tbody[@class='p-datatable-tbody']/tr")
     List<WebElement> tableRow;
 
-    public DataTable(WebDriver driver)
+    @FindBy(xpath=".//td[1]//div[contains(@class,'p-checkbox')]")
+    WebElement checkBoxButton;
+
+    @FindBy(xpath=".//td[3]")
+    WebElement nameColumn;
+
+    public DataTablePage(WebDriver driver)
     {
         super(driver);
 
@@ -27,12 +33,10 @@ public class DataTable extends BasePage {
        scrollintoView(checkBox,driver);
         for(WebElement el : tableRow)
         {
-            WebElement nameColumn= el.findElement(By.xpath(".//td[3]"));
             //System.out.println(nameColumn.getText());
             if(nameColumn.getText().equals(name))
             {
-                WebElement checkBoxColumn=el.findElement(By.xpath(".//td[1]//div[contains(@class,'p-checkbox')]"));
-                checkBoxColumn.click();
+                checkBoxButton.click();
                 break;
             }
         }

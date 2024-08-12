@@ -1,20 +1,18 @@
 package tests;
 
 import base.BaseTest;
-import base.WebdriverManager;
-import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.DataTable;
+import pages.DataTablePage;
 
 public class DatatableTest extends BaseTest {
 
-    DataTable dataTable;
+    DataTablePage dataTable;
 
 
     @Test
     public void verifyclickOnCheckBox()
     {
-        dataTable=new DataTable(driver);
+        dataTable=new DataTablePage(driver);
         driver.get(prop.getProperty("url"));
         dataTable.clickonCheckBox("Blue Band");
     }
